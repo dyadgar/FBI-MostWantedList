@@ -1,0 +1,32 @@
+{% extends 'profile_app/base.html' %}
+
+{% block title %} {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+<div class="container">
+  <h2>Username: {{user.username}}</h2>
+  <div class="card" style="width:250px">
+    <img class="card-img-top" src="{{ user.profile.image.url }}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Name: {{user.first_name}} {{ user.last_name}}</h4>
+      <p class="card-text">Email: {{user.email}}</p>
+
+    </div>
+  </div>
+  <br>
+
+{% else %}
+<h1>You are not logged in</h1>
+<br>
+<a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+{% endif%}
+
+{% endblock %}

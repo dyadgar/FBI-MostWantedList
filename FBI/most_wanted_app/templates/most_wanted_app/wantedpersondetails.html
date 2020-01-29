@@ -1,0 +1,312 @@
+
+{% extends 'profile_app/base.html' %}
+
+{% block title %} <h1>Wanted Person details</h1>{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+
+
+  <div class="row">
+
+  <div class="img/vid display col-md-5">
+{% for img in images  %}
+              <div class="mySlides">
+                <img src="{{img.link}}" style="width: 150; height: 150;">
+              </div>
+      {% endfor %}
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <div class="row">
+{% for img in images  %}
+    <div class="column">
+      <img class="demo cursor" src="{{img.link}}" style="width: 100px; height: 100px; margin: 5px;" onclick="currentSlide({{forloop.counter}}+1)" alt="" >
+    </div>
+        {% endfor %}
+
+    </div>
+
+
+    <div class="row">
+
+      <table class="table table-striped">
+  <thead>
+<!--    <tr>-->
+<!--      <th scope="col">#</th>-->
+<!--      <th scope="col">First</th>-->
+<!--      <th scope="col">Last</th>-->
+<!--      <th scope="col">Handle</th>-->
+<!--    </tr>-->
+  </thead>
+  <tbody>
+  <tr>
+      <th scope="row"></th>
+      <td>Dates of Birth Used:</td>
+
+
+             <td>{%for bdate in date_of_birth %} {{bdate.date }}, {% endfor %}</td>
+
+
+  </tr>
+  <tr>
+      <th scope="row"></th>
+      <td>Place of Birth:</td>
+      <td>{{wanted_person.place_ofbirth}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Hair:</td>
+      <td>{{wanted_person.hair}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Eyes:</td>
+      <td>{{wanted_person.eyes}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Height Minimum:</td>
+      <td>{{wanted_person.height_min}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Height Maximum:</td>
+      <td>{{wanted_person.height_max}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Weight:</td>
+      <td>{{wanted_person.weight}}</td>
+
+    </tr>    <tr>
+      <th scope="row"></th>
+      <td>Build:</td>
+      <td>{{wanted_person.build}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Sex:</td>
+      <td>{{wanted_person.Sex}}</td>
+
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Nationality:</td>
+      <td>{{wanted_person.nationality}}</td>
+
+    </tr>
+    </tr>
+      <tr>
+      <th scope="row"></th>
+      <td>Languages:</td>
+      <td>{%for lang in languages %} {{lang.name }}, {% endfor %}</td>
+
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+
+    <div class="description_and_rewardsandtips col-md-7">
+      <div class="row">
+          <div class="productdescriptionsection col-md-12">
+            <h2>{{wanted_person.warning}}</h2>
+
+              <h4>Aliases:</h4><br>
+              <p> {% for alias in aliases%} {{alias.name}}, {% endfor %}</p>
+              <h4>Caution:</h4>
+              <p>{{wanted_person.caution}}</p>
+              <h4>description:</h4>
+              <p>{{wanted_person.description}}</p>
+              <h4>Rewards:</h4>
+              <p>{{wanted_person.reward}}</p>
+              <h4>Remarks:</h4>
+              <p>{{wanted_person.remarks}}</p>
+          </div>
+          <div class="row">
+            <div class="butlinks" style="text-align: center;">
+                <a type="button" class="btn btn-primary"  href="">Submit Tip</a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    </div>
+
+    <div class="row">
+        <div style="text-align: center;">
+            <h2>Posters</h2>
+
+            <ul>
+                {% for poster in posters %}
+            <li><a href="{{poster.link}}">{{poster.language}}</a></li>
+            {% endfor %}
+                </ul>
+        </div>
+    </div>
+  </div>
+<br>
+<br>
+
+
+<!--    posters-->
+<!--    aliases-->
+<!--    date_of_birth-->
+<!--    languages-->
+
+<!--class FBImostwanteddata(models.Model):-->
+<!--    name = models.CharField(max_length=30, null=True, blank=True, unique=True)-->
+<!--    description = models.CharField(max_length=500, null=True, blank=True)-->
+<!--    date_ofbirth = models.ManyToManyField(Most_wanted_dateofbirth)  # ManytoMany-->
+<!--    place_ofbirth = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    hair = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    eyes = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    height_max = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    height_min = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    weight = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    build = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    sex = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    race_raw = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    nationality = models.CharField(max_length=30, null=True, blank=True)-->
+<!--    languages = models.ManyToManyField(Most_wanted_languages)  # ManytoMany-->
+<!--    reward = models.CharField(max_length=500, null=True, blank=True)-->
+<!--    remarks = models.CharField(max_length=500, null=True, blank=True)-->
+<!--    caution = models.CharField(max_length=500, null=True, blank=True)-->
+<!--    warning = models.CharField(max_length=200, null=True, blank=True)-->
+
+
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+<!--move links to right a bit-->
+.butlinks{
+  margin-left: 5px;
+}
+
+
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: white;
+  padding: 2px 16px;
+  \
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+
+{% endblock %}
