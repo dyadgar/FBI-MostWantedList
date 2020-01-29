@@ -7,7 +7,7 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
+    # path('', views.home, name='home'),
     path('register/', views.register, name='register'),
     path('', include('django.contrib.auth.urls')),
     path('<username>/', views.profile, name='profile'),

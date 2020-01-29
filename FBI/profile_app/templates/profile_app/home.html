@@ -7,9 +7,14 @@
 
 
 {% block content %}
-
+{% if user.is_authenticated %}
 
 <h2><strong>Total users registered: </strong> {{ count }}</h2>
 
+{% else %}
+
+<h1><strong>Hello World!!!!</strong></h1>
+
+{% endif %}
 
 {% endblock %}

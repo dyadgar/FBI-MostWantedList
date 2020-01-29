@@ -18,9 +18,12 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.views.static import serve
 from django.conf import settings
+from profile_app import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
     path('profile/', include('profile_app.urls')),
     path('forum/', include('forum_app.urls')),
     path('chat/', include('chat_app.urls')),
